@@ -26,7 +26,7 @@ function res = S_2_x_f(x, u_x)
 endfunction
 S_2_x = S_2_x_f(x, u_x)
 
-gamma = 0.9;
+gamma = 0.95;
 
 # Нижняя граница доверительного интервала для матожидания
 # tinv - функция распределения инверсии t студента
@@ -59,87 +59,130 @@ endfunction
 sigma_2_low = sigma_2_low_f(S_2_x, gamma, n)
 sigma_2_high = sigma_2_high_f(S_2_x, gamma, n)
 
+x = x_unsorted;
+y = [];
 # Построение графиков
 figure();
 hold on;
-x_n = 1:1:n;
-for i = 1:numel(x)
+x_n = 2:1:n;
+for i = 1:numel(x_n)
   y(i) = u_x_f(x);
 endfor
+
 plot(x_n, y, 'r');
 xlabel('n')
 ylabel('y')
 
-x_n = 1:1:n;
-for i = 1:numel(x)
-  y(i) = u_x_f(x(1:i));
+x_n = 2:1:n;
+for i = 2:numel(x)
+  y(i - 1) = u_x_f(x(2:i));
 endfor
 plot(x_n, y, 'b');
 xlabel('n')
 ylabel('y')
 
-for i = 1:numel(x)
-  u_x = u_x_f(x(1:i));
-  S_2_x = S_2_x_f(x(1:i), u_x);
-  y(i) = u_low_f(u_x, S_2_x, i, gamma);
+for i = 2:numel(x)
+  u_x = u_x_f(x(2:i));
+  S_2_x = S_2_x_f(x(2:i), u_x);
+  y(i - 1) = u_low_f(u_x, S_2_x, i, gamma);
 endfor
 
 plot(x_n, y, 'g');
 xlabel('n')
 ylabel('y')
 
-for i = 1:numel(x)
-  u_x = u_x_f(x(1:i));
-  S_2_x = S_2_x_f(x(1:i), u_x);
-  y(i) = u_high_f(u_x, S_2_x, i, gamma);
+for i = 2:numel(x)
+  u_x = u_x_f(x(2:i));
+  S_2_x = S_2_x_f(x(2:i), u_x);
+  y(i - 1) = u_high_f(u_x, S_2_x, i, gamma);
 endfor
 
 plot(x_n, y, 'c');
 xlabel('n')
 ylabel('y')
-legend ({"u\\_x", "u\\_x от n", "u\\_low от n", "u\\_high от n"}, "location", "east");
+legend ({"u\\_x", "u\\_x от n", "u\\_low от n", "u\\_high от n"}, "location", "north");
 hold off;
-
 
 # Графики для дисперсии
 figure();
 hold on;
-x_n = 1:1:n;
-for i = 1:numel(x)
-  y(i) = S_2_x_f(x, u_x);
+x_n = 2:1:n;
+for i = 2:numel(x)
+  y(i - 1) = S_2_x_f(x, u_x);
 endfor
 plot(x_n, y, 'r');
 xlabel('n')
 ylabel('y')
 
-x_n = 1:1:n;
-for i = 1:numel(x)
-  u_x = u_x_f(x(1:i));
-  y(i) = S_2_x_f(x(1:i), u_x);
+x_n = 2:1:n;
+for i = 2:numel(x)
+  u_x = u_x_f(x(2:i));
+  y(i - 1) = S_2_x_f(x(2:i), u_x);
 endfor
 plot(x_n, y, 'b');
 xlabel('n')
 ylabel('y')
 
-for i = 1:numel(x)
-  u_x = u_x_f(x(1:i));
-  S_2_x = S_2_x_f(x(1:i), u_x);
-  y(i) = sigma_2_low_f(S_2_x, gamma, i);
+for i = 2:numel(x)
+  u_x = u_x_f(x(2:i));
+  S_2_x = S_2_x_f(x(2:i), u_x);
+  y(i - 1) = sigma_2_low_f(S_2_x, gamma, i);
 endfor
 
 plot(x_n, y, 'g');
 xlabel('n')
 ylabel('y')
 
-for i = 1:numel(x)
-  u_x = u_x_f(x(1:i));
-  S_2_x = S_2_x_f(x(1:i), u_x);
-  y(i) = sigma_2_high_f(S_2_x, gamma, i);
+for i = 2:numel(x)
+  u_x = u_x_f(x(2:i));
+  S_2_x = S_2_x_f(x(2:i), u_x);
+  y(i - 1) = sigma_2_high_f(S_2_x, gamma, i);
 endfor
 
 plot(x_n, y, 'c');
 xlabel('n')
 ylabel('y')
-legend ({"S\\_2\\_x", "S\\_2\\_x от n", "sigma\\_2\\_low от n", "sigma\\_2\\_high от n"}, "location", "east");
+legend ({"S\\_2\\_x", "S\\_2\\_x от n", "sigma\\_2\\_low от n", "sigma\\_2\\_high от n"}, "location", "north");
 hold off;
 
+# Графики для дисперсии с n = 10
+figure();
+hold on;
+x_n = 2:1:n;
+for i = 2:numel(x)
+  y(i - 1) = S_2_x_f(x, u_x);
+endfor
+plot(x_n(10:numel(x_n)), y(10:numel(y)), 'r');
+xlabel('n')
+ylabel('y')
+
+x_n = 2:1:n;
+for i = 2:numel(x)
+  u_x = u_x_f(x(2:i));
+  y(i - 1) = S_2_x_f(x(2:i), u_x);
+endfor
+plot(x_n(10:numel(x_n)), y(10:numel(y)), 'b');
+xlabel('n')
+ylabel('y')
+
+for i = 2:numel(x)
+  u_x = u_x_f(x(2:i));
+  S_2_x = S_2_x_f(x(2:i), u_x);
+  y(i - 1) = sigma_2_low_f(S_2_x, gamma, i);
+endfor
+
+plot(x_n(10:numel(x_n)), y(10:numel(y)), 'g');
+xlabel('n')
+ylabel('y')
+
+for i = 2:numel(x)
+  u_x = u_x_f(x(2:i));
+  S_2_x = S_2_x_f(x(2:i), u_x);
+  y(i - 1) = sigma_2_high_f(S_2_x, gamma, i);
+endfor
+
+plot(x_n(10:numel(x_n)), y(10:numel(y)), 'c');
+xlabel('n')
+ylabel('y')
+legend ({"S\\_2\\_x", "S\\_2\\_x от n", "sigma\\_2\\_low от n", "sigma\\_2\\_high от n"}, "location", "north");
+hold off;
