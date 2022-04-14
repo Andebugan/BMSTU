@@ -1,0 +1,37 @@
+domains
+name=symbol
+phone_number=string
+surname=symbol
+lastname=symbol
+university=symbol
+
+predicates
+nondeterm phone(name, surname, lastname, phone_number)
+nondeterm student(name, surname, lastname, university)
+nondeterm person(name, surname, lastname):-
+
+clauses
+phone(konstantin, smirnov, bespalovich, "8(855)-635-55-61").
+phone(andrew, birukov, bespalovich, "8(271)-654-94-40").   
+phone(andrew, odintsov, vladimirovich, "8(230)-621-65-76").
+phone(andrew, lebedev, sharovich, "8(573)-309-53-75").     
+phone(konstantin, trofimov, sharovich, "8(490)-711-75-48").
+phone(peter, agafonov, maximovich, "8(467)-655-23-59").    
+phone(andrew, ivanov, osipovich, "8(627)-179-35-36").      
+phone(german, trofimov, osipovich, "8(324)-976-73-29").    
+phone(german, trofimov, andreevich, "8(956)-448-35-72").   
+phone(andrew, avdeev, voronovich, "8(934)-966-93-91").
+
+student(kirill, zuev, semenovich, tsu).
+student(alexander, lapin, voronovich, mepi).
+student(german, trofimov, vladimirovich, hsu).
+student(maxim, ivanov, maximovich, mepi).
+student(andrew, yakushev, arkchipovich, sppu).
+student(konstantin, osipov, osipovich, bmstu).
+student(pavel, osipov, grigorievich, nsu).
+student(andrew, avdeev, semenovich, itmo).
+student(pavel, trofimov, sharovich, mepi).
+student(peter, avdeev, vladimirovich, lmsu).
+
+goal	
+phone(X, Y, Z, K).

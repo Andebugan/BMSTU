@@ -1,0 +1,108 @@
+% Настройки стиля ГОСТ 7-32
+% Для начала определяем, хотим мы или нет, чтобы рисунки и таблицы нумеровались в пределах раздела, или нам нужна сквозная нумерация.
+\EqInChapter % формулы будут нумероваться в пределах раздела
+\TableInChapter % таблицы будут нумероваться в пределах раздела
+\PicInChapter % рисунки будут нумероваться в пределах раздела
+\usepackage{slashbox}
+
+\usepackage[table,xcdraw]{xcolor}
+
+% Добавляем гипертекстовое оглавление в PDF
+\usepackage[
+bookmarks=true, colorlinks=true, unicode=true,
+urlcolor=black,linkcolor=black, anchorcolor=black,
+citecolor=black, menucolor=black, filecolor=black,
+]{hyperref}
+
+% Изменение начертания шрифта --- после чего выглядит таймсоподобно.
+\usepackage{cyrtimespatched}
+
+% графика
+\usepackage{graphicx}
+\graphicspath{ {./img/} }
+
+% отделять первую строку раздела абзацным отступом
+\usepackage{indentfirst} 
+
+% Пакет Tikz
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,shadows}
+
+% Произвольная нумерация списков.
+\usepackage{enumerate}
+
+% ячейки в несколько строчек
+\usepackage{multirow}
+
+% itemize внутри tabular
+\usepackage{paralist,array}
+
+% объявляем новую команду для переноса строки внутри ячейки таблицы
+\newcommand{\specialcell}[2][c]{%
+	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pdfpages}
+\usepackage{caption}
+% \captionsetup[table]{position=top}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\usepackage{setspace}
+\usepackage{tabularx}
+
+\makeatletter
+\newcommand{\vhrulefill}[1]
+{
+	\leavevmode\leaders\hrule\@height#1\hfill \kern\z@
+}
+\makeatother
+
+\makeatletter
+\newcommand{\reportheader}[2]
+{
+	{\centering
+		\bf\huge #1 \\ \bf\Large #2\par
+	}
+}
+\makeatother
+
+% \reportstrattr{имяАтрибута}{значение}
+\makeatletter
+\newcommand{\reportstrattr}[2]
+{
+	\large\textbf{#1} & \large{#2} \\\cline{2-2} \\
+}
+\makeatother
+
+\makeatletter
+\newcommand{\reportnumattr}[2]
+{
+	\large\textbf{#1} & \large{#2} \\ \\
+}
+\makeatother
+
+% \reportstudent{ФИО}{группа}
+\makeatletter
+\newcommand{\reportstudent}[2]
+{
+	\large\textbf{Студент} & #2 & & & ~~ & #1 \\
+	\cline{2-2} \cline{4-4} \cline{6-6} \vspace{-4mm} \\
+	& & & \large\textsuperscript{(подпись, дата)} & &
+	\large\textsuperscript{(Фамилия И.О.)} \\
+}
+\makeatother
+
+% \reporttutor{ФИО}
+\makeatletter
+\newcommand{\reporttutor}[1]
+{
+	\large\textbf{Преподователь} & & & & & #1 \\
+	\cline{4-4} \cline{6-6} \vspace{-4mm} \\
+	& & & \large\textsuperscript{(подпись, дата)} & &
+	\large\textsuperscript{(Фамилия И.О.)} \\
+}
+\makeatother
+

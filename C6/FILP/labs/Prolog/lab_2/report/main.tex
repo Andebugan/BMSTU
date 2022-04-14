@@ -1,0 +1,153 @@
+\chapter{Цели и задачи работы}
+\textbf{Цель работы} --- получить навыки построения модели предметной области, разработки и оформления программы на Prolog, изучить принципы, логику  разработки и оформления программы на Prolog.
+\textbf{Задачи работы} --- приобрести навыки декларативного описания предметной области с использованием фактов и правил. Изучить способы использования термов, переменных, фактов и правил в программе на Prolog, принципы и правила сопоставления и отождествления, порядок унификации.
+
+\chapter{Ответы на вопросы}
+(Часть 1)\\
+Что такое терм?\\
+
+Что такое предикат в матлогике?\\
+
+Что описывает предикат в Prolog?\\
+
+Назовите виды предложений в программе и приведите примеры таких предложений из вашей программы. Какие предложения являются основными, а какие - не основными? Каковы: синтаксис и семантика (формальный смысл) этих предложений (основных и неосновных)?\\
+
+Каковы назначение, виды и особенности использования переменных в программе на Prolog? Какое предложение БЗ сформулировано в более общей - абстрактной форме: содержащее или не содержащее переменных?\\
+
+Что такое подстановка?\\
+
+Что такое пример терма? Как и когда строится? Как вы думаете, система строит и хранит примеры?\\
+
+(Часть 2)\\
+В какой части правила сформулировано знание? Это знание о чём, с формальной точки зрения?\\
+
+Что такое процедура?\\
+
+Сколько в БЗ текущего задания процедур?\\
+
+Что такое пример терма, это частный случай терма, пример? Как строится пример?\\
+
+Что такое наиболее общий пример?\\
+
+Назначение и результат работы алгоритма унификации. Что значит двунаправленная передача параметров при работе алгоритма унинфикации, поясните на примере одно из случаев пункта 3.\\
+
+В каком случае запускается механизм отката?\\
+
+Виды и назначение переменных в Prolog. Примеры из задания. Почему использованы те или другие переменные (примеры из задания)?\\
+
+\chapter{Практические задания}
+\section{Задание 1}
+Разработать программу - "Телефонный справочник". Протестировать работу программы.
+\begin{lstlisting}
+predicates
+nondeterm phone(symbol, symbol)
+
+clauses
+phone("Pavel", "8(916)521-23-16").
+phone("Kirill", "8(915)522-74-51").
+phone("Alexander", "8(914)511-03-52").
+phone("Pavel", "8(913)311-65-45").
+phone("Maxim", "8(914)641-49-14").
+phone("Vladimir", "8(916)821-15-73").
+
+goal
+phone(X,Y).
+\end{lstlisting}
+
+Тестирование программы:\\
+\begin{lstlisting}
+phone("Pavel", "0").
+no
+
+phone("Pavel", "8(915)522-74-51"). 
+yes
+
+phone("Pavel", X).
+X=8(916)521-23-16
+X=8(913)311-65-45
+2 Solutions	
+
+phone(X, "8(914)511-03-52").
+X=Alexander
+1 Solution  
+
+phone(X, Y).
+X=Pavel, Y=8(916)521-23-16
+X=Kirill, Y=8(915)522-74-51
+X=Alexander, Y=8(914)511-03-52
+X=Pavel, Y=8(913)311-65-45
+X=Maxim, Y=8(914)641-49-14
+X=Vladimir, Y=8(916)821-15-73
+6 Solutions
+\end{lstlisting}
+
+\section{Задание 2}
+Составить программу базу знаний , с помощью которой можно определить, например, множество студентов, обучающихся в одном ВУЗе и их телефоны. Студент может одновременно обучаться в нескольких ВУЗах. Привести примеры возможных вариантов вопросов и варианты ответов (не менее 3 х). Описать порядок формирования вариантов ответа.\\
+Исходную базу знаний сформировать с помощью только фактов.\\
+*Исходную базу знаний сформировать, используя правила.\\
+** Разработать свою базу знаний (содержание произвольно)\\
+
+\begin{lstlisting}
+domains
+name=symbol
+phone_number=string
+surname=symbol
+lastname=symbol
+university=symbol
+
+predicates
+nondeterm phone(name, surname, lastname, phone_number)
+nondeterm student(name, surname, lastname, university)
+nondeterm person(name, surname, lastname, university, phone_number)
+
+clauses
+phone(peter, ivanov, andreevich, "8(219)-892-22-70").
+phone(konstantin, knyazev, bespalovich, "8(779)-991-46-67"). 
+phone(german, trofimov, semenovich, "8(441)-495-69-57").     
+phone(kirill, avdeev, osipovich, "8(882)-634-60-37").        
+phone(andrew, ivanov, grigorievich, "8(453)-375-89-10").     
+phone(pavel, ivanov, pavlovich, "8(377)-586-23-67").
+phone(konstantin, yakushev, samoilovich, "8(495)-735-20-15").
+phone(pavel, knyazev, bespalovich, "8(787)-104-49-39").      
+phone(german, odintsov, bespalovich, "8(333)-845-58-82").    
+phone(alexander, ivanov, pavlovich, "8(353)-566-30-43").
+   
+student(peter, ivanov, andreevich, bmstu).
+student(konstantin, knyazev, bespalovich, mipt).
+student(german, trofimov, semenovich, itmo).
+student(kirill, avdeev, osipovich, mipt).
+student(andrew, ivanov, grigorievich, tsu).
+student(pavel, ivanov, pavlovich, itmo).
+student(konstantin, yakushev, samoilovich, nsu).
+student(pavel, knyazev, bespalovich, mepi).
+student(german, odintsov, bespalovich, bmstu).
+student(alexander, ivanov, pavlovich, nsu).
+
+person(Name, Surname, Lastname, University, Phone):-student(Name, Surname, Lastname, University),phone(Name, Surname, Lastname, Phone).
+goal	
+person(Name, Surname, Lastname, bmstu, Phone).
+\end{lstlisting}
+
+Примеры возможных варинатов вопросов и варинаты ответов:
+\begin{lstlisting}
+person(Name, Surname, Lastname, bmstu, Phone).
+
+Name=peter, Surname=ivanov, Lastname=andreevich, Phone=8(219)-892-22-70
+Name=german, Surname=odintsov, Lastname=bespalovich, Phone=8(333)-845-58-82
+2 Solutions
+
+
+person(Name, ivanov, Lastname, University, Phone).
+
+Name=peter, Lastname=andreevich, University=bmstu, Phone=8(219)-892-22-70
+Name=andrew, Lastname=grigorievich, University=tsu, Phone=8(453)-375-89-10
+Name=pavel, Lastname=pavlovich, University=itmo, Phone=8(377)-586-23-67
+Name=alexander, Lastname=pavlovich, University=nsu, Phone=8(353)-566-30-43
+4 Solutions
+
+
+person(Name, Surname, Lastname, University, "8(441)-495-69-57").
+
+Name=german, Surname=trofimov, Lastname=semenovich, University=itmo
+1 Solution
+\end{lstlisting}
