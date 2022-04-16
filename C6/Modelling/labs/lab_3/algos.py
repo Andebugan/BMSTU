@@ -15,23 +15,23 @@ T_w = 2000 #K
 T_0 = 10000 #K
 p = 4 # от 4 до 15
 
-def T(Z: float) -> float:
-    return (T_w - T_0) * ((Z)**p) + T_0
+def T(z: float) -> float:
+    return (T_w - T_0) * ((z)**p) + T_0
 
-def k(Z: float) -> float:
-    return k_0 * ((T(Z)/300)**2)
+def k(z: float) -> float:
+    return k_0 * ((T(z)/300)**2)
 
-def u_p(Z: float):
-    return (3.084e-4)/(e**(4.799e+4/T(Z)) - 1)
+def u_p(z: float):
+    return (3.084e-4)/(e**(4.799e+4/T(z)) - 1)
 
-def F_z(Z: float, F: float, u: float) -> float: # F_z(u)
-    if Z == 0:
-        return ((c * R)/2) * k(Z) * (u_p(Z) - u)
+def F_z(z: float, F: float, u: float) -> float: # F_z(u)
+    if z == 0:
+        return ((c * R)/2) * k(z) * (u_p(z) - u)
     else:
-        return c * R * k(Z) * (u_p(Z) - u) - (F / Z)
+        return c * R * k(z) * (u_p(z) - u) - (F / z)
 
-def u_z(Z: float, F: float): # u_z(F)
-    return -(3 * R * F * k(Z)) / c
+def u_z(z: float, F: float): # u_z(F)
+    return -(3 * R * F * k(z)) / c
 
 def runge_kutt_4(h_0: float, z_0: float, f_0: float, u_0: float, z_max: float, F: Callable, Phi: Callable):
     z_n = z_0
@@ -65,6 +65,35 @@ def runge_kutt_4(h_0: float, z_0: float, f_0: float, u_0: float, z_max: float, F
         u_res.append(u_n)
         f_res.append(f_n)
     return z_res, u_res, f_res
+
+# lab 3
+def k_n(z: float) -> float:
+    return c / (3 * R * k(z))
+
+def half_kappa(z_n: float, h: float) -> float:
+    return (k_n(z_n) + k_n(z_n + h))/2
+
+def f_n(z_n: float) -> float:
+    return c * k(z_n) * u_p(z_n)
+
+def p_n(z_n: float) -> float:
+    return c * k(z_n)
+
+def V_n(z_n: float, h: float) -> float:
+    return ((z_n + h/2) * (z_n + h/2) - (z_n - h/2) * (z_n - h/2)) / 2
+
+def A_n(z_n: float, h: float) -> float:
+    return (z_n - h/2)(half_kappa(z_n - h/2, h))/(R * R * h)
+
+def B_n(A_n: float, C_n: float, z_n: float) -> float:
+    return A_n + C_n + p_n(z_n) * V_n(z_n)
+
+def D_n(z_n: float):
+    return f_n(z_n) * V_n(z_n)
+
+def sweep_method(h: float, z_0: float, z_max: float, F_0: float):
+    
+    return None
 
 if __name__ == '__main__':
     xi = 0.001

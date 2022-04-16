@@ -504,13 +504,13 @@ K_{N} y_{N - 1} + M_{N} y_{N} = P_{N}\\
 \end{cases}
 \end{equation}
 
-$y_{n} = \xi_{n+1} y_{n+1} + \nu_{n+1}, (8)$\\
-$\xi{n+1}, \nu{n+1}$ - прогоночные коэффициенты\\
+$y_{n} = \xi_{n+1}, y_{n+1} + \nu_{n+1}, (8)$\\
+$\xi_{n+1}, \nu_{n+1}$ - прогоночные коэффициенты\\
 Запишем:\\
-$y_{n-1} = \xi_{n} y_{n} + \nu_{n}$\\
+$y_{n-1} = \xi_{n}, y_{n} + \nu_{n}$\\
 Подставим в (7'):\\
-$y_{n} = \frac{C_{n}}{B_{n} - A_{n}\xi_{n}} y_{n+1} + \frac{F_{n} + A_{n} \nu_{n}}{B_{n} - A_{n} \xi_{n}}$\\
-Сравним с (8)Ю видим:\\
+$y_{n} = \frac{C_{n}}{B_{n} - A_{n}\xi_{n}}, y_{n+1} + \frac{F_{n} + A_{n} \nu_{n}}{B_{n} - A_{n} \xi_{n}}$\\
+Сравним с (8) видим:\\
 \begin{equation}
 \begin{cases}
 \xi_{n+1} = \frac{C_{n}}{B_{n} - A_{n} \xi_{n}}, (9.1)\\
@@ -523,12 +523,12 @@ $y_{n} = \frac{C_{n}}{B_{n} - A_{n}\xi_{n}} y_{n+1} + \frac{F_{n} + A_{n} \nu_{n
 2) Обратный ход, по (8) вычисляем $y_{n}$\\
 
 Начальные значения прогоночных коэффициентов берутся из левого краевого условия:\\
-$y_{0} = -\frac{M_{0}}{K_{0}}y_{1} + \frac{P_{0}}{K_{0}} \rightarrow \xi_{1} = -\frac{M_{0}}{K_{0}}, \nu_{1} = \frac{P_{0}}{K_{0}}$\\
+$y_{0} = -\frac{M_{0}}{K_{0}}, y_{1} + \frac{P_{0}}{K_{0}} \rightarrow \xi_{1} = -\frac{M_{0}}{K_{0}}, \nu_{1} = \frac{P_{0}}{K_{0}}$\\
 
 Значенияе $y_{N}$ находится с использованием правого краевого условия:\\
-$y_{N - 1}  = \xi_{N} y_{N} + \nu_{N}$\\
+$y_{N - 1}  = \xi_{N}, y_{N} + \nu_{N}$\\
 $K_{N} \xi_{N} y_{N} + K_{N} \nu_{N} + M_{N} y_{N} = P_{N}$\\
-$y_{N} = \frac{P_{N} - K_{N}\nu_{N}}{K_{N}\xi_{N} + M_{N}}$\\
+$y_{N} = \frac{P_{N} - K_{N} \nu_{N}}{K_{N} \xi_{N} + M_{N}}$\\
 
 
 Покажем сходимость разностного решения к точному: $y_{n} \rightarrow u(x_{n})$\\
@@ -604,7 +604,110 @@ $u_{1} = u_{0} + h u'_{0} + \frac{h^{2}}{2}u_{0}'' +  o(h^{3})$\\
 $y_{1} = y_{0} + h \frac{\gamma - \beta y_{0}}{\alpha} + \frac{h^{2}}{2} (f(x_{0}) + p(x_{0}) y_{0})$\\
 
 \chapter{Лекция 6}
-Переписать
+\section{Разностный метод. Получение разностной схемы для уравнения второго порядка с краевыми условиями 2-го и 3-го родов интегро-интерполяционным методом. Интегрально-интерполяционный метод.}
+
+$\frac{d}{dx}(k(x) - \frac{du}{dx}) - p(x)u(x) + f(x) = 0$ (1)\\
+
+Непонятно, как аппроксимировать $\frac{d}{dx}(k(x) - \frac{du}{dx})$ этот комплекс (k(x) может быть разрывным) следовательно возникнут фиктивные источники.\\
+
+Краевые условия:\\
+$x = a, -k(a)\frac{du}{dx} = F_0$ - 2-го рода (2)\\
+$x = b, -k(a)\frac{du}{dx} = F_0$ - 3-го рода (3)\\
+
+Выделяем шаблон из сетки $u_n$\\
+\begin{figure}[H]
+	\center{\includegraphics[scale=1.2]{a_4}}
+\end{figure}
+
+$w_h = \{x_n: x_n = a + nh\}$\\
+$g = \{x_n: x_{n-1}, x_n, x_{n+1}\}$\\
+
+Интегрируем исходное уравнение на ячейке\\
+
+$F = -k(x)\frac{du}{dx}$ (4) - по смыслу - поток\\
+$-\int\limits_{x_{n-\frac{1}{2}}}^{x_{n+\frac{1}{2}}} \frac{dF}{dx} dx - \int\limits_{x_{n-\frac{1}{2}}}^{x_{n+\frac{1}{2}}} p(x) u(x)dx + \int\limits^{x_{n+\frac{1}{2}}}_{x_{n-\frac{1}{2}}}f(x)dx = 0$\\
+
+$F_{n-\frac{1}{2}} - F_{n + \frac{1}{2}} - p_n y_n h + f_n h = 0$ (5)\\
+$p_n = p(x_n)$\\
+$f_n = f(x_n)$\\
+
+из (4) проводя интегрирование на интервале:\\
+$\lint{x_n}{x_{n+1}} \frac{du}{dx} dx = -\lint{x_n}{x_{n+1}} \frac{F}{k(x)} dx$\\
+$y_{n+1} - y_n = -F_{n+\frac{1}{2}} \lint{x_n}{x_{n+1}} \frac{dx}{k(x)}$\\
+$F_{n+\frac{1}{2}} = \kappa_{n+\frac{1}{2}} \frac{y_n - y_{n+1}}{h}$ (6)\\
+$\kappa_{n+\frac{1}{2}} = \frac{h}{\lint{x_n}{x_{n+1}} \frac{dx}{k(x)}}$\\
+
+если применить метод трапеций:\\
+$\kappa_{n+\frac{1}{2}} = \frac{h}{\frac{h}{2}(\frac{1}{k_{n+1}} + \frac{1}{k_n})} = \frac{2k_{n+1} k_n}{k_{n+1} + k_n}$\\
+
+если применить метод средних:\\
+$\kappa_{n+\frac{1}{2}} = \frac{h}{h \frac{1}{k_{n+\frac{1}{2}}}} = k_{n+\frac{1}{2}} = \frac{k_n + k_{n+1}}{2}$\\
+
+аналогично от (4)\\
+
+$F_{n-\frac{1}{2}} = \kappa_{n-\frac{1}{2}} \frac{y_{n-1} - y_n}{h}$ (7)\\
+
+Подставим (6), (7) в (5):\\
+$\kappa_{n-\frac{1}{2}}(y_{n-1} - y_n) - \kappa_{n+\frac{1}{2}} (y_n - y_{n+1}) - p_n y_n h^2 + f_n h^2 = 0$\\
+
+Каноничный вид:\\
+$A_n y_{n-1} - B_n y_n + C_n y_{n+1}  = -F_n$ (8)\\
+где:\\
+$A_n = \kappa_{n-\frac{1}{2}}$\\
+$C_n = \kappa_{n+\frac{1}{2}}$\\
+$B_n = A_n + C_n + P_n h^2$\\
+$F_n = f_n h^2$\\
+
+Получим разностные аналоги краевых условий (2) и (3):\\
+Проинтегрируем (1) на $[x_0, x_{\frac{1}{2}}]:$\\
+$-\lint{x_0}{x_{\frac{1}{2}}} \frac{dF}{dx} - \lint{x_0}{x_{\frac{1}{2}}} p(x) u(x) dx + \lint{x_0}{x_{\frac{1}{2}}} f(x) dx = 0$\\
+$F_0 - F_{\frac{1}{2}} - \frac{h}{2\cdot2} (p_{\frac{1}{2}} y_{\frac{1}{2}} + p_0 y_0) + \frac{h}{4} (f_0 + f_{\frac{1}{2}}) = 0$\\
+$F_{\frac{1}{2}} = \kappa_{\frac{1}{2}} \frac{y_0 - y_1}{h}$\\
+$F_0 - \kappa_{\frac{1}{2}} \frac{y_0 - y_1}{h} - \frac{h}{4}(p_{\frac{1}{2}} y_{\frac{1}{2}} + p_0 y_0) + \frac{h}{4}(f_0 + f_{\frac{1}{2}}) = 0$\\
+$p_{\frac{1}{2}} = \frac{p_0 + p_1}{2}$\\
+$y_{\frac{1}{2}} = \frac{y_0 + y_1}{2}$\\
+$f_{\frac{1}{2}} = \frac{f_0 + f_1}{2}$\\
+
+В общем виде краевое условие при x = a:\\
+$M_0 y_0 + K_0 y_1 = P_0$\\
+где $M_0 = \kappa_{\frac{1}{2}} + \frac{h^2}{8} p_{\frac{1}{2}} + \frac{h^2}{4} p_0$\\
+$K_0 = -\kappa_\frac{1}{2} + \frac{h^2}{8} p_{\frac{1}{2}}$\\
+Краевое условие при x = b:\\
+$\lint{x_{n - \odb{2}}}{x_n} (\cdot) dx$\\
+ 
+В полученном выражении:\\
+$F_{N - \odb{2}} = \kappa_{N - \odb{2}} \frac{y_{N-1} - y_N}{h}$\\
+$F_N$ берём из краевого условия (3)\\
+$F_N = \alpha(y_N - \beta)$\\
+
+Получим в общем виде:\\
+$M_N y_{N - 1} + K_N y_N = P_N$\\
+$M_N, K_N, P_N$ - найти самим\\
+
+Замечания:\\
+При h стремящемся к 0 слагаемыми с $h^2$ можно принебречь:\\
+$M_0 = \kappa_\odb{2}, K_0 = -\kappa_\odb{2}, P_0 = hF_0$\\
+$\kappa_\odb{2} y_0 - \kappa_\odb{2} y_1 = hF_0$, то есть $-\kappa_\odb{2} \frac{y_1 - y_0}{h} = F_0$\\
+
+Простейшая аппроксимация (2):\\
+$-k_0 \frac{y_1 - y_0}{h} = F_0$\\
+
+Простейшая аппроксимация (3):\\
+$-k_N \frac{y_N - y_{N-1}}{h} = \alpha(y_N - \beta)$\\
+
+\section{Лабораторная работа 3}
+\begin{equation}
+\begin{cases}
+F = -\frac{c}{3Rk(r)} \frac{du}{dz}, (1)\\
+\frac{1}{R} \frac{1}{Z} \frac{d}{dZ} (ZF) = c k (r) (u_{p}(r) - u(r)), (2)\\
+Z = 0, F = 0, (3)\\
+Z = 1, F = m \frac{cu}{2}, (4)\\
+\end{cases}
+\end{equation}
+
+Специфика системы:\\
+$\lint{z_{n-\odb{2}}}{z_{n+\odb{2}}}(\cdot)zdz$ - уравнение\\
+$\lint{z_0}{z_\odb{2}}(\cdot)zdz, \lint{z_{N-\odb{2}}}{z_N}zdz$ - краевые условия\\
 
 \chapter{Лекция 7}
 \section{Интегро-интерполяционный метод для квазилинейных уравнений в криволинейных координатах}
@@ -651,16 +754,21 @@ $D_n = D(y_n)$\\
 $z = z_0, -k(z_0)\frac{du}{R dz} = F_0$\\
 $z = 1, -k(1) \frac{du}{R dz} = \alpha(u(1) - \beta)$\\
 $\int\limits_{z_0}^{z_{\frac{1}{2}}}(\cdot)z^p dz$\\
-$-\frac{1}{R}\int\limits_{z_0}^{z_{\frac{1}{2}}}\frac{1}{z^p} \frac{d}{dz} (z^p F) z^p dz - \int\limits_{z_0}^{z_{\frac{1}{2}}} p(u) u z^p dz + \int\limits_{z_0}^{z_{\frac{1}{2}}}\int\limits_{z_0}^{z_{\frac{1}{2}}} f(u) z^p dz = 0$\\
-$\frac{1}{R} (z_0^p F_0 - z^p_{\frac{1}{2}} - z^p_{\frac{1}{2}} F_{\frac{1}{2}}) - \frac{h}{4}(p_0 y_0 + p_{\frac{1}{2}} y_{\frac{1}{2}})(\frac{z^{p+1}_{\frac{1}{2}} - z_0^{p+1}}{p+1}) + \frac{h}{4}(f_0 + f_{\frac{1}{2}} V_{\frac{1}{2}} = 0$\\
+$-\frac{1}{R}\int\limits_{z_0}^{z_{\frac{1}{2}}}\frac{1}{z^p} \frac{d}{dz} (z^p F) z^p dz - \int\limits_{z_0}^{z_{\frac{1}{2}}} p(u) u z^p dz + \int\limits_{z_0}^{z_{\frac{1}{2}}} f(u) z^p dz = 0$\\
+$\frac{1}{R} (z_0^p F_0 - z^p_{\frac{1}{2}} F_{\frac{1}{2}}) - \frac{h}{4}(p_0 y_0 + p_{\frac{1}{2}} y_{\frac{1}{2}})(\frac{z^{p+1}_{\frac{1}{2}} - z_0^{p+1}}{p+1}) + \frac{h}{4}(f_0 + f_{\frac{1}{2}})V_{\frac{1}{2}} = 0$\\
 
 Подставим:\\
 $F_{\frac{1}{2}} = \kappa_{\frac{1}{2}} \frac{y_0 - y_1}{Rh}$\\
 $\frac{1}{R}(z_0^p F_0 - \kappa_{\frac{1}{2}}\frac{y_0 - y_1}{Rh} - \frac{h}{4}(p_0 y_0 + p_{\frac{1}{2}} y_{\frac{1}{2}}) V_{\frac{1}{2}} + (f_0 + f_{\frac{1}{2}})\frac{h}{4} V_{\frac{1}{2}} = 0$\\
 Простейшая аппроксимация:\\
-$y_2 = \frac{y_0 + y_1}{2}$\\
-$p_2 = \frac{p_0 + p_1}{2}$\\
-$f_2 = \frac{f_0 + f_1}{2}$\\
+%$y_2 = \frac{y_0 + y_1}{2}$\\
+%$p_2 = \frac{p_0 + p_1}{2}$\\
+%$f_2 = \frac{f_0 + f_1}{2}$\\
+
+$y_\frac{1}{2} = \frac{y_0 + y_1}{2}$\\
+$p_\frac{1}{2} = \frac{p_0 + p_1}{2}$\\
+$f_\frac{1}{2} = \frac{f_0 + f_1}{2}$\\
+
 $M_0 y_0 + K_0 y_1 = P_0$\\
 $-k\frac{y_1 - y_0}{Rh} = F_0$\\
 
@@ -668,7 +776,7 @@ $-k\frac{y_1 - y_0}{Rh} = F_0$\\
 $\int\limits_{z_{N-\frac{1}{2}}}^{z_N} (\cdot) z_p dz$\\
 Поиск интегрирования учитываем, что:\\
 $F_{N-\frac{1}{2}} = \kappa_{N-\frac{1}{2}}\frac{y_{N-1} - y_N}{Rh}$\\
-$F_N = \alpha(y_N \cdot \beta)$\\
+$F_N = \alpha(y_N - \beta)$\\
 $M_N y_N + K_N y_{N-1} = P_N$\\
 
 \section{Методы решения квазилинейных уравнений. Метод простой итерации}
