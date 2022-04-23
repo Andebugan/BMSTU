@@ -1,38 +1,76 @@
 domains
-name=symbol
 phone_number=string
 surname=symbol
-lastname=symbol
-university=symbol
+
+city=symbol
+street=symbol
+house_num=integer
+flat_num=integer
+
+mark=symbol
+color=symbol
+price=integer
+bank_name=symbol
+dep_num=integer
+dep_size=integer
+
+adress=adress(city, street, house_num, flat_num)
 
 predicates
-nondeterm phone(name, surname, lastname, phone_number)
-nondeterm student(name, surname, lastname, university)
-nondeterm person(name, surname, lastname, university, phone_number)
+nondeterm phone(surname, phone_number, adress)
+nondeterm car(surname, mark, color, price)
+nondeterm bank(surname,bank_name,dep_num,dep_size)
+nondeterm find_car(phone_number,surname,mark,price)
+nondeterm find_mark(phone_number,mark)
+nondeterm find_phone_street_bank(surname, phone_number, city, street, bank_name)
+nondeterm find_owner(color, mark, surname, phone_number, city, bank_name)
 
 clauses
-phone(peter, ivanov, andreevich, "8(219)-892-22-70").
-phone(konstantin, knyazev, bespalovich, "8(779)-991-46-67"). 
-phone(german, trofimov, semenovich, "8(441)-495-69-57").     
-phone(kirill, avdeev, osipovich, "8(882)-634-60-37").        
-phone(andrew, ivanov, grigorievich, "8(453)-375-89-10").     
-phone(pavel, ivanov, pavlovich, "8(377)-586-23-67").
-phone(konstantin, yakushev, samoilovich, "8(495)-735-20-15").
-phone(pavel, knyazev, bespalovich, "8(787)-104-49-39").      
-phone(german, odintsov, bespalovich, "8(333)-845-58-82").    
-phone(alexander, ivanov, pavlovich, "8(353)-566-30-43").
-   
-student(peter, ivanov, andreevich, bmstu).
-student(konstantin, knyazev, bespalovich, mipt).
-student(german, trofimov, semenovich, itmo).
-student(kirill, avdeev, osipovich, mipt).
-student(andrew, ivanov, grigorievich, tsu).
-student(pavel, ivanov, pavlovich, itmo).
-student(konstantin, yakushev, samoilovich, nsu).
-student(pavel, knyazev, bespalovich, mepi).
-student(german, odintsov, bespalovich, bmstu).
-student(alexander, ivanov, pavlovich, nsu).
+phone(trofimov, "8(972)-236-88-62",adress(moscow,krasnaya,89,199)).
+phone(trofimov, "8(118)-902-79-19",adress(moscow,krasnaya,89,199)).
+phone(ivanov, "8(481)-716-34-95",adress(tula,imperskaya,37,179)).
+phone(ivanov, "8(100)-890-60-39",adress(tula,imperskaya,37,179)).
+phone(osipov, "8(541)-954-80-76",adress(samara,petrovstaya,81,184)).
+phone(osipov, "8(172)-769-16-96",adress(samara,petrovstaya,81,184)).
+phone(smirnov, "8(415)-724-38-49",adress(st_petersburg,kerenski_bulvar,28,192)).
+phone(smirnov, "8(533)-971-59-87",adress(st_petersburg,kerenski_bulvar,28,192)).
+phone(avdeev, "8(294)-313-58-75",adress(st_petersburg,imperskaya,27,118)).      
+phone(avdeev, "8(716)-742-39-78",adress(st_petersburg,imperskaya,27,118)).      
+phone(lebedev, "8(691)-645-30-38",adress(moscow,krasnaya,66,174)).
+phone(avdeev, "8(372)-485-47-49",adress(moscow,krasnaya,76,176)).
 
-person(Name, Surname, Lastname, University, Phone):-student(Name, Surname, Lastname, University),phone(Name, Surname, Lastname, Phone).
+bank(trofimov,tinkoff,8546,1252536).
+bank(trofimov,alphabank,2029,2521060).
+bank(ivanov,vtb,8864,1299690).
+bank(ivanov,sberbank,5744,3933822).
+bank(osipov,raffaizen,7899,4160502).
+bank(osipov,tinkoff,7970,2237517).
+bank(smirnov,vtb,9641,1012682).
+bank(smirnov,sberbank,8605,4974929).
+bank(avdeev,vtb,9197,1050565).
+bank(avdeev,raffaizen,7828,4905040).
+bank(lebedev,alphabank,9270,846207).
+bank(avdeev,tinkoff,1505,3401347).
+
+car(trofimov,volkswagen,red,1600000).
+car(trofimov,volkswagen,blue,1600000).
+car(ivanov,audi,red,1600000).
+car(ivanov,bmw,yellow,1450000).
+car(osipov,honda,grey,1300000).
+car(osipov,honda,blue,1300000).
+car(smirnov,bmw,green,1450000).
+car(smirnov,volkswagen,black,1600000).
+car(avdeev,volkswagen,green,1600000).
+car(avdeev,honda,red,1300000).
+car(lebedev,volkswagen,blue,1600000).
+car(avdeev,hyundai,black,1470000).
+
+find_car(Phone, Surname, Mark, Price) :- car(Surname, Mark, _, Price), phone(Surname, Phone, _).
+find_mark(Phone, Mark) :- find_car(Phone, _, Mark, _).
+find_phone_street_bank(Surname, Phone, City, Street, Bank) :- phone(Surname, Phone, adress(City, Street, _, _)), bank(Surname, Bank, _, _).
+find_owner(Color, Mark, Surname, Phone, City, Bank) :- phone(Surname, Phone, adress(City, _, _, _)), bank(Surname, Bank, _, _), car(Surname, Mark, Color, _).
 goal	
-person(Name, Surname, Lastname, University, "8(441)-495-69-57").
+%find_car("8(972)-236-88-62", Surname, Mark, Price).
+%find_mark("8(972)-236-88-62", Mark).
+%find_phone_street_bank(trofimov, Phone, City, Street, Bank).
+find_owner(red, audi, Surname, Phone, City, Bank).

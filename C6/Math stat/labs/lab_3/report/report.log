@@ -1,0 +1,475 @@
+This is LuaTeX, Version 1.14.0 (MiKTeX 21.12.10) (format=luatex 2022.4.8)  8 APR 2022 22:16
+ restricted system commands enabled.
+**report.tex
+(./report.tex
+! Undefined control sequence.
+l.1 \documentclass
+                [utf8x, 12pt]{G7-32}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.3 \include
+          {preambule.inc}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.4 \include
+          {commands.inc}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.5 \include
+          {listings.inc}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.7 \usepackage
+             {float}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.8 \usepackage
+             {amssymb}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.9 \usepackage
+             {amsmath}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.11 \begin
+         {document}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.13 \frontmatter
+                % выключает нумерацию ВСЕГО; здес...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+(./title.tex
+! Undefined control sequence.
+l.1 \begin
+        {table}[ht]
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.3 	\begin
+         {tabular}{|c|p{400pt}|}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+{
+l.3 	\begin{
+          tabular}{|c|p{400pt}|}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+{
+l.3 	\begin{
+          tabular}{|c|p{400pt}|}
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Undefined control sequence.
+l.4 	\hline
+         
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.5 		\begin
+          {tabular}[c]{@{}c@{}} \includegraphics[scale=0.37]{EmblemBMSTU} \\...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.5 		\begin{tabular}[c]{@{}c@{}} \includegraphics
+                                                [scale=0.37]{EmblemBMSTU} \\...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Runaway argument?
+\end {tabular} & \footnotesize \begin {tabular}[c]{@{}c@{}}\textbf {М\ETC.
+! Paragraph ended before \\ was complete.
+<to be read again> 
+\par 
+l.13 
+   
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Undefined control sequence.
+l.14 \begin
+         {table}[ht]
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.16 	\begin
+          {tabularx}{\textwidth} {l >{\raggedright\arraybackslash}X }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+{
+l.16 	\begin{
+           tabularx}{\textwidth} {l >{\raggedright\arraybackslash}X }
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+{
+l.16 	\begin{
+           tabularx}{\textwidth} {l >{\raggedright\arraybackslash}X }
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Undefined control sequence.
+l.16 	\begin{tabularx}{\textwidth
+                               } {l >{\raggedright\arraybackslash}X }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.16 ...\textwidth} {l >{\raggedright\arraybackslash
+                                                  }X }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.17 		ФАКУЛЬТЕТ &
+                          <<Информатика и системы упра...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Runaway argument?
+ \cline {2-2} \vspace {-4mm} \\ КАФЕДРА & <<Программн\ETC.
+! Paragraph ended before \\ was complete.
+<to be read again> 
+\par 
+l.21 
+   
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Undefined control sequence.
+l.22 \vspace
+          {3cm}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.23 \reportheader
+                {Отчёт}{по лабораторной работе №2}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.24 \vspace
+          {0.5cm}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.26 \begin
+         {table}[h]
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.28 	\begin
+          {tabularx}{\textwidth} {l >{\raggedright\arraybackslash}X }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+{
+l.28 	\begin{
+           tabularx}{\textwidth} {l >{\raggedright\arraybackslash}X }
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+{
+l.28 	\begin{
+           tabularx}{\textwidth} {l >{\raggedright\arraybackslash}X }
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Undefined control sequence.
+l.28 	\begin{tabularx}{\textwidth
+                               } {l >{\raggedright\arraybackslash}X }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.28 ...\textwidth} {l >{\raggedright\arraybackslash
+                                                  }X }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.29 		\reportstrattr
+                   {Название}{<<Интервальные оценки...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.30 		\reportstrattr
+                   {Дисциплина}{<<Математическая ст...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[1{C:/Users/diffu/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
+Missing character: There is no Ф (U+0424) in font cmr10!
+Missing character: There is no А (U+0410) in font cmr10!
+Missing character: There is no К (U+041A) in font cmr10!
+Missing character: There is no У (U+0423) in font cmr10!
+Missing character: There is no Л (U+041B) in font cmr10!
+Missing character: There is no Ь (U+042C) in font cmr10!
+Missing character: There is no Т (U+0422) in font cmr10!
+Missing character: There is no Е (U+0415) in font cmr10!
+Missing character: There is no Т (U+0422) in font cmr10!
+Missing character: There is no И (U+0418) in font cmr10!
+Missing character: There is no н (U+043D) in font cmr10!
+Missing character: There is no ф (U+0444) in font cmr10!
+Missing character: There is no о (U+043E) in font cmr10!
+Missing character: There is no р (U+0440) in font cmr10!
+Missing character: There is no м (U+043C) in font cmr10!
+Missing character: There is no а (U+0430) in font cmr10!
+Missing character: There is no т (U+0442) in font cmr10!
+Missing character: There is no и (U+0438) in font cmr10!
+Missing character: There is no к (U+043A) in font cmr10!
+Missing character: There is no а (U+0430) in font cmr10!
+Missing character: There is no и (U+0438) in font cmr10!
+Missing character: There is no с (U+0441) in font cmr10!
+Missing character: There is no и (U+0438) in font cmr10!
+Missing character: There is no с (U+0441) in font cmr10!
+Missing character: There is no т (U+0442) in font cmr10!
+Missing character: There is no е (U+0435) in font cmr10!
+Missing character: There is no м (U+043C) in font cmr10!
+Missing character: There is no ы (U+044B) in font cmr10!
+Missing character: There is no у (U+0443) in font cmr10!
+Missing character: There is no п (U+043F) in font cmr10!
+Missing character: There is no р (U+0440) in font cmr10!
+Missing character: There is no а (U+0430) in font cmr10!
+Missing character: There is no в (U+0432) in font cmr10!
+Missing character: There is no л (U+043B) in font cmr10!
+Missing character: There is no е (U+0435) in font cmr10!
+Missing character: There is no н (U+043D) in font cmr10!
+Missing character: There is no и (U+0438) in font cmr10!
+Missing character: There is no я (U+044F) in font cmr10!
+Missing character: There is no О (U+041E) in font cmr10!
+Missing character: There is no т (U+0442) in font cmr10!
+Missing character: There is no ч (U+0447) in font cmr10!
+Missing character: There is no ё (U+0451) in font cmr10!
+Missing character: There is no т (U+0442) in font cmr10!
+Missing character: There is no п (U+043F) in font cmr10!
+Missing character: There is no о (U+043E) in font cmr10!
+Missing character: There is no л (U+043B) in font cmr10!
+Missing character: There is no а (U+0430) in font cmr10!
+Missing character: There is no б (U+0431) in font cmr10!
+Missing character: There is no о (U+043E) in font cmr10!
+Missing character: There is no р (U+0440) in font cmr10!
+Missing character: There is no а (U+0430) in font cmr10!
+Missing character: There is no т (U+0442) in font cmr10!
+Missing character: There is no о (U+043E) in font cmr10!
+Missing character: There is no р (U+0440) in font cmr10!
+Missing character: There is no н (U+043D) in font cmr10!
+Missing character: There is no о (U+043E) in font cmr10!
+Missing character: There is no й (U+0439) in font cmr10!
+Missing character: There is no р (U+0440) in font cmr10!
+Missing character: There is no а (U+0430) in font cmr10!
+Missing character: There is no б (U+0431) in font cmr10!
+Missing character: There is no о (U+043E) in font cmr10!
+Missing character: There is no т (U+0442) in font cmr10!
+Missing character: There is no е (U+0435) in font cmr10!
+Missing character: There is no № (U+2116) in font cmr10!
+Missing character: There is no Н (U+041D) in font cmr10!
+Missing character: There is no а (U+0430) in font cmr10!
+Missing character: There is no з (U+0437) in font cmr10!
+Missing character: There is no в (U+0432) in font cmr10!
+Missing character: There is no а (U+0430) in font cmr10!
+Missing character: There is no н (U+043D) in font cmr10!
+Missing character: There is no и (U+0438) in font cmr10!
+Missing character: There is no е (U+0435) in font cmr10!
+Missing character: There is no И (U+0418) in font cmr10!
+Missing character: There is no н (U+043D) in font cmr10!
+Missing character: There is no т (U+0442) in font cmr10!
+Missing character: There is no е (U+0435) in font cmr10!
+Missing character: There is no р (U+0440) in font cmr10!
+Missing character: There is no в (U+0432) in font cmr10!
+Missing character: There is no а (U+0430) in font cmr10!
+Missing character: There is no л (U+043B) in font cmr10!
+Missing character: There is no ь (U+044C) in font cmr10!
+Missing character: There is no н (U+043D) in font cmr10!
+Missing character: There is no ы (U+044B) in font cmr10!
+Missing character: There is no е (U+0435) in font cmr10!
+Missing character: There is no о (U+043E) in font cmr10!
+Missing character: There is no ц (U+0446) in font cmr10!
+Missing character: There is no е (U+0435) in font cmr10!
+Missing character: There is no н (U+043D) in font cmr10!
+Missing character: There is no к (U+043A) in font cmr10!
+Missing character: There is no и (U+0438) in font cmr10!
+Missing character: There is no Д (U+0414) in font cmr10!
+Missing character: There is no и (U+0438) in font cmr10!
+Missing character: There is no с (U+0441) in font cmr10!
+Missing character: There is no ц (U+0446) in font cmr10!
+Missing character: There is no и (U+0438) in font cmr10!
+Missing character: There is no п (U+043F) in font cmr10!
+Missing character: There is no л (U+043B) in font cmr10!
+Missing character: There is no и (U+0438) in font cmr10!
+Missing character: There is no н (U+043D) in font cmr10!
+Missing character: There is no а (U+0430) in font cmr10!
+Missing character: There is no М (U+041C) in font cmr10!
+Missing character: There is no а (U+0430) in font cmr10!
+Missing character: There is no т (U+0442) in font cmr10!
+Missing character: There is no е (U+0435) in font cmr10!
+Missing character: There is no м (U+043C) in font cmr10!
+Missing character: There is no а (U+0430) in font cmr10!
+Missing character: There is no т (U+0442) in font cmr10!
+Missing character: There is no и (U+0438) in font cmr10!
+Missing character: There is no ч (U+0447) in font cmr10!
+Missing character: There is no е (U+0435) in font cmr10!
+Missing character: There is no с (U+0441) in font cmr10!
+Missing character: There is no к (U+043A) in font cmr10!
+Missing character: There is no а (U+0430) in font cmr10!
+Missing character: There is no я (U+044F) in font cmr10!
+Missing character: There is no с (U+0441) in font cmr10!
+Missing character: There is no т (U+0442) in font cmr10!
+Missing character: There is no а (U+0430) in font cmr10!
+Missing character: There is no т (U+0442) in font cmr10!
+Missing character: There is no и (U+0438) in font cmr10!
+Missing character: There is no с (U+0441) in font cmr10!
+Missing character: There is no т (U+0442) in font cmr10!
+Missing character: There is no и (U+0438) in font cmr10!
+Missing character: There is no к (U+043A) in font cmr10!
+Missing character: There is no а (U+0430) in font cmr10!
+]))<D:/SoftwareStorage/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on report.pdf (1 page, 20206 bytes).
+
+PDF statistics: 10 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 1 words of extra memory for PDF output out of 10000 (max. 100000000)
+

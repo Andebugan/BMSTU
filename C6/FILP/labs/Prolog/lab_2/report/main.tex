@@ -5,149 +5,194 @@
 \chapter{Ответы на вопросы}
 (Часть 1)\\
 Что такое терм?\\
+Единственная синтаксическая конструкция языка prolog, которая может быть либо константой, либо переменной, либо составным термом.
 
 Что такое предикат в матлогике?\\
+Предикат в математической логике это символ, представляющий свойство или отношение.
 
 Что описывает предикат в Prolog?\\
+Предикат в prolog описывает отношение между термами.
 
 Назовите виды предложений в программе и приведите примеры таких предложений из вашей программы. Какие предложения являются основными, а какие - не основными? Каковы: синтаксис и семантика (формальный смысл) этих предложений (основных и неосновных)?\\
+Предложения - могут быть основными и неосновными. Основные предложения не содержат переменных. Пример синтаксиса:\\
+\begin{lstlisting}
+Основное:
+a(1, 2, 3).
+b(4, 2, 3).
+Неосновное:
+c(A, B, C) := a(A, B, C), b(A, B, C).
+\end{lstlisting}
 
 Каковы назначение, виды и особенности использования переменных в программе на Prolog? Какое предложение БЗ сформулировано в более общей - абстрактной форме: содержащее или не содержащее переменных?\\
+Назначение переменных - передача информации во времени и пространстве. Виды переменных - неанонимные и анонимные. Неанонимные не конкретизируются в отличие от анонимных. Предложение БЗ, содержащее переменные сформулировано в более абстрактной форме.
 
 Что такое подстановка?\\
+Это такое множество пар $\{X_i = t_i\}$, где $t_i$ - терм, не содержащий переменных (в худшем случае не содержащий $X_i$). То есть $t_i$ является значением для $X_i$.
 
 Что такое пример терма? Как и когда строится? Как вы думаете, система строит и хранит примеры?\\
+Терм B называется примером терма A, если существует $\Theta$ такое, что $B = A\Theta$, где $\Theta$ - множество подстановок. Пример терма строится во время доказательства, когда система ищет значения для терма, позволяющие ответить на поставленный вопрос ''да''. Да, система строит и хранит примеры в процессе нахождения ответа на вопрос.
 
 (Часть 2)\\
 В какой части правила сформулировано знание? Это знание о чём, с формальной точки зрения?\\
+Знание формулируется в заголовке правила. Это знание об отношении между термами, входящими в правило.
 
 Что такое процедура?\\
+Это независимая именованная часть программы, которую после однократного описания можно многократно вызвать по имени из последующих частей программы для выполнения определенных действий.
 
 Сколько в БЗ текущего задания процедур?\\
+Две.
 
 Что такое пример терма, это частный случай терма, пример? Как строится пример?\\
+Терм B называется примером терма A, если существует $\Theta$ такое, что $B = A\Theta$, где $\Theta$ - множество подстановок. Пример терма строится во время доказательства, когда система ищет значения для терма, позволяющие ответить на поставленный вопрос ''да''.\\
+
+Пример примера:\\
+Пусть есть терм a(1, 2, 3) и b(A, B, C). Тогда b будет является примером a при A = 1, B = 2 и C = 3.\\
+
+Построение примеров - пример строится на основе сравнения термов. Всего есть 4 вида термов - константа, неосновной или основной символьный терм, составной терм. Пусть у нас есть термы A и B. Тогда B является примером A, если:\\
+1) B - несоставной терм, A - несоставной терм и B = A\\
+2) B - составной терм, A - составной терм и арности A и B совпадают, совпадают значения главных функторов и термы-аргументы A и B попарно совпадают. Если A или B, содержит переменные, то производится их конкретизация для того, чтобы определить правильность попарного совпадения.
 
 Что такое наиболее общий пример?\\
+Наиболее общий пример это такое пример, которые является более общим по отношению к любому другому примеру.
 
 Назначение и результат работы алгоритма унификации. Что значит двунаправленная передача параметров при работе алгоритма унинфикации, поясните на примере одно из случаев пункта 3.\\
+Назначение алгоритма унификации - проверка термоф на унифицируемости. Результат работы - 0 (неуспех) или 1 (успех). Двунаправленная передача параметров при работе алгоритма унификации - 
 
 В каком случае запускается механизм отката?\\
+Если решение не найдено и невозможен переход в новое состояние (тупик).
 
 Виды и назначение переменных в Prolog. Примеры из задания. Почему использованы те или другие переменные (примеры из задания)?\\
+Назначение переменных - передача информации во времени и пространстве. Виды переменных - неанонимные и анонимные. Неанонимные не конкретизируются в отличие от анонимных.
 
 \chapter{Практические задания}
-\section{Задание 1}
-Разработать программу - "Телефонный справочник". Протестировать работу программы.
-\begin{lstlisting}
-predicates
-nondeterm phone(symbol, symbol)
+Составить программу т.е. модель предметной области базу знаний , объединив в ней информацию знания
+\begin{itemize}
+\item «Телефонный справочник»: Фамилия, №тел, Адрес структура (Город, Улица, №дома, №кв)
+\item «Автомобили»: Фамилия владельца, Марка, Цвет, Стоимость, и др.,Марка, Цвет, Стоимость, и др.
+\item «Вкладчики банков»: Фамилия, Банк, счет, сумма, др.Фамилия, Банк, счет, сумма, др.
+\end{itemize}
+Владелец может иметь несколько телефонов, автомобилей, вкладов (Факты).
 
-clauses
-phone("Pavel", "8(916)521-23-16").
-phone("Kirill", "8(915)522-74-51").
-phone("Alexander", "8(914)511-03-52").
-phone("Pavel", "8(913)311-65-45").
-phone("Maxim", "8(914)641-49-14").
-phone("Vladimir", "8(916)821-15-73").
+Используя правила, обеспечить возможность поиска:\\
+1.\\
+а) По № телефона найти: Фамилию, Марку автомобиля, Стоимость автомобиля милию, Марку автомобиля, Стоимость автомобиля (может быть несколько)\\
+б) Используя сформированное а) правило, по № телефона найти: только Марку автомобиля (автомобилей может быть несколько)\\
+2. Используя простой, не составной вопрос: по Фамилии (уникальна в городе, но в разных городах есть однофамильцы) и Городу проживания найти: Улицу проживания,, Банки, в которых есть вклады и №телефона.\\
 
-goal
-phone(X,Y).
-\end{lstlisting}
+Для задания1 и задания2:\\
+для одного из вариантов ответов, и для а) и для б), описать словесно порядок поиска ответа на вопрос, указав, как выбираются знания, и, при этом, для каждого этапа унификации, выписать подстановку наибольший общий унификатор, и соответствующие примеры термов.\\
 
-Тестирование программы:\\
-\begin{lstlisting}
-phone("Pavel", "0").
-no
-
-phone("Pavel", "8(915)522-74-51"). 
-yes
-
-phone("Pavel", X).
-X=8(916)521-23-16
-X=8(913)311-65-45
-2 Solutions	
-
-phone(X, "8(914)511-03-52").
-X=Alexander
-1 Solution  
-
-phone(X, Y).
-X=Pavel, Y=8(916)521-23-16
-X=Kirill, Y=8(915)522-74-51
-X=Alexander, Y=8(914)511-03-52
-X=Pavel, Y=8(913)311-65-45
-X=Maxim, Y=8(914)641-49-14
-X=Vladimir, Y=8(916)821-15-73
-6 Solutions
-\end{lstlisting}
-
-\section{Задание 2}
-Составить программу базу знаний , с помощью которой можно определить, например, множество студентов, обучающихся в одном ВУЗе и их телефоны. Студент может одновременно обучаться в нескольких ВУЗах. Привести примеры возможных вариантов вопросов и варианты ответов (не менее 3 х). Описать порядок формирования вариантов ответа.\\
-Исходную базу знаний сформировать с помощью только фактов.\\
-*Исходную базу знаний сформировать, используя правила.\\
-** Разработать свою базу знаний (содержание произвольно)\\
+Используя конъюнктивное правило и простой вопрос , обеспечить возможность поиска:\\
+По Марке и Цвету автомобиля найти Фамилию, Город, Телефон и Банки, в которых владелец автомобиля имеет вклады. Лишней информации не находить и не передавать!!! Владельцев может быть несколько  - не более 3-х, один и ни одного.\\
+1. Для каждого из трех вариантов словесно подробно описать порядок формирования ответа (в виде таблицы). При у казать отметить моменты очередного запуска алгоритма унификации и полный результат его работы. Обосновать следующий шаг работы системы. Выписать унификаторы подстановки. Указать моменты, причины и результат отката, если он есть.\\
+2. Для случая нескольких владельцев (2-х) приведите примеры работы системы при разных порядках следования в БЗ процедур и знаний в них «Телефонный справочник», «Автомобили», «Вкладчик и банков», или «Автомобили», «Вкладчики банков», «Телефонный справочник» )). Сделайте вывод:\\ Одинаковы ли множество работ и объем работ в разных случаях\\
+3. Оформите 2 таблицы, демонстрирующие порядок работы алгоритма унификации вопроса и подходящего заголовк а правила (для двух слуаев из пункта 2) и укажите результаты его работы: ответ и побочный эффект.\\
 
 \begin{lstlisting}
 domains
-name=symbol
 phone_number=string
 surname=symbol
-lastname=symbol
-university=symbol
+
+city=symbol
+street=symbol
+house_num=integer
+flat_num=integer
+
+mark=symbol
+color=symbol
+price=integer
+bank_name=symbol
+dep_num=integer
+dep_size=integer
+
+adress=adress(city, street, house_num, flat_num)
 
 predicates
-nondeterm phone(name, surname, lastname, phone_number)
-nondeterm student(name, surname, lastname, university)
-nondeterm person(name, surname, lastname, university, phone_number)
+nondeterm phone(surname, phone_number, adress)
+nondeterm car(surname, mark, color, price)
+nondeterm bank(surname,bank_name,dep_num,dep_size)
+nondeterm find_car(phone_number,surname,mark,price)
+nondeterm find_mark(phone_number,mark)
+nondeterm find_phone_street_bank(surname, phone_number, city, street, bank_name)
+nondeterm find_owner(color, mark, surname, phone_number, city, bank_name)
 
 clauses
-phone(peter, ivanov, andreevich, "8(219)-892-22-70").
-phone(konstantin, knyazev, bespalovich, "8(779)-991-46-67"). 
-phone(german, trofimov, semenovich, "8(441)-495-69-57").     
-phone(kirill, avdeev, osipovich, "8(882)-634-60-37").        
-phone(andrew, ivanov, grigorievich, "8(453)-375-89-10").     
-phone(pavel, ivanov, pavlovich, "8(377)-586-23-67").
-phone(konstantin, yakushev, samoilovich, "8(495)-735-20-15").
-phone(pavel, knyazev, bespalovich, "8(787)-104-49-39").      
-phone(german, odintsov, bespalovich, "8(333)-845-58-82").    
-phone(alexander, ivanov, pavlovich, "8(353)-566-30-43").
-   
-student(peter, ivanov, andreevich, bmstu).
-student(konstantin, knyazev, bespalovich, mipt).
-student(german, trofimov, semenovich, itmo).
-student(kirill, avdeev, osipovich, mipt).
-student(andrew, ivanov, grigorievich, tsu).
-student(pavel, ivanov, pavlovich, itmo).
-student(konstantin, yakushev, samoilovich, nsu).
-student(pavel, knyazev, bespalovich, mepi).
-student(german, odintsov, bespalovich, bmstu).
-student(alexander, ivanov, pavlovich, nsu).
+phone(trofimov, "8(972)-236-88-62",adress(moscow,krasnaya,89,199)).
+phone(trofimov, "8(118)-902-79-19",adress(moscow,krasnaya,89,199)).
+phone(ivanov, "8(481)-716-34-95",adress(tula,imperskaya,37,179)).
+phone(ivanov, "8(100)-890-60-39",adress(tula,imperskaya,37,179)).
+phone(osipov, "8(541)-954-80-76",adress(samara,petrovstaya,81,184)).
+phone(osipov, "8(172)-769-16-96",adress(samara,petrovstaya,81,184)).
+phone(smirnov, "8(415)-724-38-49",adress(st_petersburg,kerenski_bulvar,28,192)).
+phone(smirnov, "8(533)-971-59-87",adress(st_petersburg,kerenski_bulvar,28,192)).
+phone(avdeev, "8(294)-313-58-75",adress(st_petersburg,imperskaya,27,118)).      
+phone(avdeev, "8(716)-742-39-78",adress(st_petersburg,imperskaya,27,118)).      
+phone(lebedev, "8(691)-645-30-38",adress(moscow,krasnaya,66,174)).
+phone(avdeev, "8(372)-485-47-49",adress(moscow,krasnaya,76,176)).
 
-person(Name, Surname, Lastname, University, Phone):-student(Name, Surname, Lastname, University),phone(Name, Surname, Lastname, Phone).
+bank(trofimov,tinkoff,8546,1252536).
+bank(trofimov,alphabank,2029,2521060).
+bank(ivanov,vtb,8864,1299690).
+bank(ivanov,sberbank,5744,3933822).
+bank(osipov,raffaizen,7899,4160502).
+bank(osipov,tinkoff,7970,2237517).
+bank(smirnov,vtb,9641,1012682).
+bank(smirnov,sberbank,8605,4974929).
+bank(avdeev,vtb,9197,1050565).
+bank(avdeev,raffaizen,7828,4905040).
+bank(lebedev,alphabank,9270,846207).
+bank(avdeev,tinkoff,1505,3401347).
+
+car(trofimov,volkswagen,red,1600000).
+car(trofimov,volkswagen,blue,1600000).
+car(ivanov,audi,red,1600000).
+car(ivanov,bmw,yellow,1450000).
+car(osipov,honda,grey,1300000).
+car(osipov,honda,blue,1300000).
+car(smirnov,bmw,green,1450000).
+car(smirnov,volkswagen,black,1600000).
+car(avdeev,volkswagen,green,1600000).
+car(avdeev,honda,red,1300000).
+car(lebedev,volkswagen,blue,1600000).
+car(avdeev,hyundai,black,1470000).
+
+find_car(Phone, Surname, Mark, Price) :- car(Surname, Mark, _, Price), phone(Surname, Phone, _).
+find_mark(Phone, Mark) :- find_car(Phone, _, Mark, _).
+find_phone_street_bank(Surname, Phone, City, Street, Bank) :- phone(Surname, Phone, adress(City, Street, _, _)), bank(Surname, Bank, _, _).
+find_owner(Color, Mark, Surname, Phone, City, Bank) :- phone(Surname, Phone, adress(City, _, _, _)), bank(Surname, Bank, _, _), car(Surname, Mark, Color, _).
 goal	
-person(Name, Surname, Lastname, bmstu, Phone).
-\end{lstlisting}
+%find_car("8(972)-236-88-62", Surname, Mark, Price).
+%find_mark("8(972)-236-88-62", Mark).
+%find_phone_street_bank(trofimov, Phone, City, Street, Bank).
+find_owner(red, audi, Surname, Phone, City, Bank).
 
-Примеры возможных варинатов вопросов и варинаты ответов:
+\end{lstlisitng}
+
+Примеры вариантов вопросов и ответов:
 \begin{lstlisting}
-person(Name, Surname, Lastname, bmstu, Phone).
+Вопрос:
+find_car("8(972)-236-88-62", Surname, Mark, Price).
 
-Name=peter, Surname=ivanov, Lastname=andreevich, Phone=8(219)-892-22-70
-Name=german, Surname=odintsov, Lastname=bespalovich, Phone=8(333)-845-58-82
+Результат
+Surname=trofimov, Mark=volkswagen, Price=1600000
+Surname=trofimov, Mark=volkswagen, Price=1600000
 2 Solutions
 
+Вопрос:
+find_mark("8(972)-236-88-62", Mark).
 
-person(Name, ivanov, Lastname, University, Phone).
+Результат:
+Mark=volkswagen
+Mark=volkswagen
+2 Solutions
 
-Name=peter, Lastname=andreevich, University=bmstu, Phone=8(219)-892-22-70
-Name=andrew, Lastname=grigorievich, University=tsu, Phone=8(453)-375-89-10
-Name=pavel, Lastname=pavlovich, University=itmo, Phone=8(377)-586-23-67
-Name=alexander, Lastname=pavlovich, University=nsu, Phone=8(353)-566-30-43
+Вопрос:
+find_phone_street_bank(trofimov, Phone, City, Street, Bank).
+
+Результат:
+Phone=8(972)-236-88-62, City=moscow, Street=krasnaya, Bank=tinkoff
+Phone=8(972)-236-88-62, City=moscow, Street=krasnaya, Bank=alphabank
+Phone=8(118)-902-79-19, City=moscow, Street=krasnaya, Bank=tinkoff
+Phone=8(118)-902-79-19, City=moscow, Street=krasnaya, Bank=alphabank
 4 Solutions
-
-
-person(Name, Surname, Lastname, University, "8(441)-495-69-57").
-
-Name=german, Surname=trofimov, Lastname=semenovich, University=itmo
-1 Solution
 \end{lstlisting}

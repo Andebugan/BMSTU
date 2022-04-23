@@ -1,0 +1,30 @@
+\documentclass[utf8x, 12pt]{G7-32}
+
+\include{preambule.inc}
+\include{commands.inc}
+\include{listings.inc}
+
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\begin{document}
+
+\frontmatter % выключает нумерацию ВСЕГО; здесь начинаются ненумерованные главы: реферат, введение, глоссарий, сокращения и прочее.
+
+\input{title.tex}
+
+%\tableofcontents
+\pagebreak
+
+%\input{introduction.tex}
+
+\mainmatter % это включает нумерацию глав и секций в документе ниже
+
+\input{main.tex}
+
+\backmatter % Здесь заканчивается нумерованная часть документа и начинаются ссылки и
+%\input{conclusion.tex}
+%\input{biblio.tex}
+
+\end{document}

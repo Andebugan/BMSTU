@@ -504,12 +504,12 @@ K_{N} y_{N - 1} + M_{N} y_{N} = P_{N}\\
 \end{cases}
 \end{equation}
 
-$y_{n} = \xi_{n+1}, y_{n+1} + \nu_{n+1}, (8)$\\
+$y_{n} = \xi_{n+1}, y_{n+1} = \nu_{n+1}, (8)$\\
 $\xi_{n+1}, \nu_{n+1}$ - прогоночные коэффициенты\\
 Запишем:\\
-$y_{n-1} = \xi_{n}, y_{n} + \nu_{n}$\\
+$y_{n-1} = \xi_{n} y_{n} + \nu_{n}$\\
 Подставим в (7'):\\
-$y_{n} = \frac{C_{n}}{B_{n} - A_{n}\xi_{n}}, y_{n+1} + \frac{F_{n} + A_{n} \nu_{n}}{B_{n} - A_{n} \xi_{n}}$\\
+$y_{n} = \frac{C_{n}}{B_{n} - A_{n}\xi_{n}} y_{n+1} + \frac{F_{n} + A_{n} \nu_{n}}{B_{n} - A_{n} \xi_{n}}$\\
 Сравним с (8) видим:\\
 \begin{equation}
 \begin{cases}
@@ -523,7 +523,7 @@ $y_{n} = \frac{C_{n}}{B_{n} - A_{n}\xi_{n}}, y_{n+1} + \frac{F_{n} + A_{n} \nu_{
 2) Обратный ход, по (8) вычисляем $y_{n}$\\
 
 Начальные значения прогоночных коэффициентов берутся из левого краевого условия:\\
-$y_{0} = -\frac{M_{0}}{K_{0}}, y_{1} + \frac{P_{0}}{K_{0}} \rightarrow \xi_{1} = -\frac{M_{0}}{K_{0}}, \nu_{1} = \frac{P_{0}}{K_{0}}$\\
+$y_{0} = -\frac{M_{0}}{K_{0}} y_{1} + \frac{P_{0}}{K_{0}} \rightarrow \xi_{0} = -\frac{M_{0}}{K_{0}}, \nu_{0} = \frac{P_{0}}{K_{0}}$\\
 
 Значенияе $y_{N}$ находится с использованием правого краевого условия:\\
 $y_{N - 1}  = \xi_{N}, y_{N} + \nu_{N}$\\
@@ -720,11 +720,11 @@ $z = \frac{r}{R}$\\
 $d = Rdz$\\
 $F = -k(u)\frac{du}{dr}$\\
 $F = -\frac{k(u)}{r} \frac{du}{dz}$ (1)\\
-$-\frac{1}{RZ^{p}} \frac{d}{dz} (z^{2}F) z^{p} dx - p(u)u + f(u) = 0$ (2)\\
+$-\frac{1}{R z^{p}} \frac{d}{dz} (z^{p} F)  - p(u)u + f(u) = 0$ (2)\\
 Интегрируем на ячейке:\\
 $-\int\limits_{z_{n-\frac{1}{2}}}^{z_{n+\frac{1}{2}}}\frac{1}{Rz^{p}}\frac{d}{dz}(z^{p}F)z^{p}dz  - \int\limits_{z_{n-\frac{1}{2}}}^{z_{n+\frac{1}{2}}}p(u)u z^{p} dz + \int\limits_{z_{n-\frac{1}{2}}}^{z_{n+\frac{1}{2}}} f(u) z^{p} dz = 0$\\
 
-$\frac{1}{R} (z^p_{n-\frac{1}{2}} F_{n-\frac{1}{2}} - z^p_{n+\frac{1}{2}} F_{n+\frac{1}{2}} - p_n y_n \frac{z^{p+1}_{n+\frac{1}{2}} - z^{p+1}_{n-\frac{1}{2}}}{p + 1} \text{(<- это Vn)} + f_n V_n = 0$  (3)\\
+$\frac{1}{R} (z^p_{n-\frac{1}{2}} F_{n-\frac{1}{2}}) - z^p_{n+\frac{1}{2}} F_{n+\frac{1}{2}} - p_n y_n \frac{z^{p+1}_{n+\frac{1}{2}} - z^{p+1}_{n-\frac{1}{2}}}{p + 1} \text{(<- это Vn)} + f_n V_n = 0$  (3)\\
 
 Из (1):\\
 $\int\limits_{z_n}^{z_{n+1}} \frac{du}{dz}dz = \int\limits_{z_n}^{z_{n+1}}\frac{R}{k(u)}F dz = -R F_{n+\frac{1}{2}} \int\limits_{z_n}^{z_{n+1}}\frac{dz}{k(u)}$\\
@@ -759,7 +759,7 @@ $\frac{1}{R} (z_0^p F_0 - z^p_{\frac{1}{2}} F_{\frac{1}{2}}) - \frac{h}{4}(p_0 y
 
 Подставим:\\
 $F_{\frac{1}{2}} = \kappa_{\frac{1}{2}} \frac{y_0 - y_1}{Rh}$\\
-$\frac{1}{R}(z_0^p F_0 - \kappa_{\frac{1}{2}}\frac{y_0 - y_1}{Rh} - \frac{h}{4}(p_0 y_0 + p_{\frac{1}{2}} y_{\frac{1}{2}}) V_{\frac{1}{2}} + (f_0 + f_{\frac{1}{2}})\frac{h}{4} V_{\frac{1}{2}} = 0$\\
+$\frac{1}{R}(z_0^p F_0 - \kappa_{\frac{1}{2}}\frac{y_0 - y_1}{Rh}) - \frac{h}{4}(p_0 y_0 + p_{\frac{1}{2}} y_{\frac{1}{2}}) V_{\frac{1}{2}} + (f_0 + f_{\frac{1}{2}})\frac{h}{4} V_{\frac{1}{2}} = 0$\\
 Простейшая аппроксимация:\\
 %$y_2 = \frac{y_0 + y_1}{2}$\\
 %$p_2 = \frac{p_0 + p_1}{2}$\\
